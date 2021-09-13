@@ -11,25 +11,67 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+
+        let tabController = UITabBarController()
+        
+        let homeStoryBoard = UIStoryboard(name: "Home", bundle: nil)
+        let searchStoryBoard = UIStoryboard(name: "Search", bundle: nil)
+        let newPostStoryBoard = UIStoryboard(name: "NewPost", bundle: nil)
+        let profileStoryBoard = UIStoryboard(name: "Profile", bundle: nil)
+        let activityStoryBoard = UIStoryboard(name: "Activity", bundle: nil)
+        
+        let homeVC = homeStoryBoard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        
+        let profileVC = profileStoryBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: "Search") as! SearchViewController
+        let newPostVC = newPostStoryBoard.instantiateViewController(withIdentifier: "NewPost") as! NewPostViewController
+        let activityVC = activityStoryBoard.instantiateViewController(withIdentifier: "Activity") as! ActivityViewController
+        
+        let vcData: [(UIViewController, UIImage, UIImage)] = [
+            (homeVC, UIImage(named: "home_tab_icon")!, UIImage(named: "home_selected_tab_icon")!),
+            (searchVC, UIImage(named: "search_tab_icon")!, UIImage(named: "search_selected_tab_icon")!),
+            (newPostVC, UIImage(named: "post_tab_icon")!, UIImage(named: "post_tab_icon")!),
+            (activityVC, UIImage(named: "activity_tab_icon")!, UIImage(named: "activity_selected_tab_icon")!),
+            (profileVC, UIImage(named: "profile_tab_icon")!, UIImage(named: "profile_selected_tab_icon")!)
+        ]
+        
+        let vcs = vcData.map { (vc, defaultImage, selectedImage) -> UINavigationController in
+            let nav = UINavigationController(rootViewController: vc)
+            nav.tabBarItem.image = defaultImage
+            nav.tabBarItem.selectedImage = selectedImage
+            return nav
+        }
+        
+        tabController.viewControllers = vcs
+        tabController.tabBar.isTranslucent = false
+        
+        if let items = tabController.tabBar.items {
+            for item in items {
+                if let image = item.image {
+                    item.image = image.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                }
+                if let selectedImage = item.selectedImage {
+                    item.selectedImage = selectedImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                }
+                item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            }
+        }
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = UIColor.white
+
+        self.window?.rootViewController = tabController
+        
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
 
 
 }

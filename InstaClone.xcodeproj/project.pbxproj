@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0814A75E26EF863B0017D381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A75D26EF863B0017D381 /* AppDelegate.swift */; };
-		0814A76026EF863B0017D381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A75F26EF863B0017D381 /* SceneDelegate.swift */; };
 		0814A76226EF863B0017D381 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A76126EF863B0017D381 /* ViewController.swift */; };
 		0814A76726EF863C0017D381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0814A76626EF863C0017D381 /* Assets.xcassets */; };
 		0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A76826EF863C0017D381 /* LaunchScreen.storyboard */; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		0814A75A26EF863B0017D381 /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0814A75D26EF863B0017D381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0814A75F26EF863B0017D381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0814A76126EF863B0017D381 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0814A76626EF863C0017D381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0814A76926EF863C0017D381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				0814A77126EF86520017D381 /* Data */,
 				0814A77526EF86520017D381 /* Library */,
 				0814A75D26EF863B0017D381 /* AppDelegate.swift */,
-				0814A75F26EF863B0017D381 /* SceneDelegate.swift */,
 				0814A76126EF863B0017D381 /* ViewController.swift */,
 				0814A76626EF863C0017D381 /* Assets.xcassets */,
 				0814A76826EF863C0017D381 /* LaunchScreen.storyboard */,
@@ -238,7 +235,6 @@
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
 				0814A79326EF88560017D381 /* ProfileViewController.swift in Sources */,
 				0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */,
-				0814A76026EF863B0017D381 /* SceneDelegate.swift in Sources */,
 				0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

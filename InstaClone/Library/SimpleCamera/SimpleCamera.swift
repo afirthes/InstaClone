@@ -3,6 +3,7 @@
 //  SimpleCamera
 //
 //
+import UIKit
 
 import AVFoundation
 
