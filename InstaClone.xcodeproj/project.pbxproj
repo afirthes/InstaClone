@@ -10,9 +10,24 @@
 		0814A75E26EF863B0017D381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A75D26EF863B0017D381 /* AppDelegate.swift */; };
 		0814A76026EF863B0017D381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A75F26EF863B0017D381 /* SceneDelegate.swift */; };
 		0814A76226EF863B0017D381 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A76126EF863B0017D381 /* ViewController.swift */; };
-		0814A76526EF863B0017D381 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A76326EF863B0017D381 /* Main.storyboard */; };
 		0814A76726EF863C0017D381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0814A76626EF863C0017D381 /* Assets.xcassets */; };
 		0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A76826EF863C0017D381 /* LaunchScreen.storyboard */; };
+		0814A77A26EF86520017D381 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77226EF86520017D381 /* UserData.swift */; };
+		0814A77B26EF86520017D381 /* FeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77326EF86520017D381 /* FeedData.swift */; };
+		0814A77C26EF86520017D381 /* ActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77426EF86520017D381 /* ActivityData.swift */; };
+		0814A77D26EF86520017D381 /* SimpleCameraProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77726EF86520017D381 /* SimpleCameraProtocol.swift */; };
+		0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77826EF86520017D381 /* SimpleCameraView.swift */; };
+		0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77926EF86520017D381 /* SimpleCamera.swift */; };
+		0814A78226EF87990017D381 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78126EF87990017D381 /* Home.storyboard */; };
+		0814A78426EF87B40017D381 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78326EF87B40017D381 /* Search.storyboard */; };
+		0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78526EF87C60017D381 /* NewPost.storyboard */; };
+		0814A78826EF87D60017D381 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78726EF87D60017D381 /* Profile.storyboard */; };
+		0814A78A26EF87E40017D381 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78926EF87E40017D381 /* Activity.storyboard */; };
+		0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A78C26EF88310017D381 /* HomeViewController.swift */; };
+		0814A78F26EF88400017D381 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A78E26EF88400017D381 /* SearchViewController.swift */; };
+		0814A79126EF884C0017D381 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A79026EF884C0017D381 /* NewPostViewController.swift */; };
+		0814A79326EF88560017D381 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A79226EF88560017D381 /* ProfileViewController.swift */; };
+		0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A79426EF88610017D381 /* ActivityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +35,25 @@
 		0814A75D26EF863B0017D381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0814A75F26EF863B0017D381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0814A76126EF863B0017D381 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0814A76426EF863B0017D381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0814A76626EF863C0017D381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0814A76926EF863C0017D381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0814A76B26EF863C0017D381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0814A77226EF86520017D381 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		0814A77326EF86520017D381 /* FeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedData.swift; sourceTree = "<group>"; };
+		0814A77426EF86520017D381 /* ActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityData.swift; sourceTree = "<group>"; };
+		0814A77726EF86520017D381 /* SimpleCameraProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCameraProtocol.swift; sourceTree = "<group>"; };
+		0814A77826EF86520017D381 /* SimpleCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCameraView.swift; sourceTree = "<group>"; };
+		0814A77926EF86520017D381 /* SimpleCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCamera.swift; sourceTree = "<group>"; };
+		0814A78126EF87990017D381 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		0814A78326EF87B40017D381 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		0814A78526EF87C60017D381 /* NewPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
+		0814A78726EF87D60017D381 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		0814A78926EF87E40017D381 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		0814A78C26EF88310017D381 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0814A78E26EF88400017D381 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0814A79026EF884C0017D381 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		0814A79226EF88560017D381 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0814A79426EF88610017D381 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +86,70 @@
 		0814A75C26EF863B0017D381 /* InstaClone */ = {
 			isa = PBXGroup;
 			children = (
+				0814A78B26EF88190017D381 /* ViewController */,
+				0814A78026EF87850017D381 /* Storyboard */,
+				0814A77126EF86520017D381 /* Data */,
+				0814A77526EF86520017D381 /* Library */,
 				0814A75D26EF863B0017D381 /* AppDelegate.swift */,
 				0814A75F26EF863B0017D381 /* SceneDelegate.swift */,
 				0814A76126EF863B0017D381 /* ViewController.swift */,
-				0814A76326EF863B0017D381 /* Main.storyboard */,
 				0814A76626EF863C0017D381 /* Assets.xcassets */,
 				0814A76826EF863C0017D381 /* LaunchScreen.storyboard */,
 				0814A76B26EF863C0017D381 /* Info.plist */,
 			);
 			path = InstaClone;
+			sourceTree = "<group>";
+		};
+		0814A77126EF86520017D381 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0814A77226EF86520017D381 /* UserData.swift */,
+				0814A77326EF86520017D381 /* FeedData.swift */,
+				0814A77426EF86520017D381 /* ActivityData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0814A77526EF86520017D381 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0814A77626EF86520017D381 /* SimpleCamera */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		0814A77626EF86520017D381 /* SimpleCamera */ = {
+			isa = PBXGroup;
+			children = (
+				0814A77726EF86520017D381 /* SimpleCameraProtocol.swift */,
+				0814A77826EF86520017D381 /* SimpleCameraView.swift */,
+				0814A77926EF86520017D381 /* SimpleCamera.swift */,
+			);
+			path = SimpleCamera;
+			sourceTree = "<group>";
+		};
+		0814A78026EF87850017D381 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0814A78126EF87990017D381 /* Home.storyboard */,
+				0814A78326EF87B40017D381 /* Search.storyboard */,
+				0814A78526EF87C60017D381 /* NewPost.storyboard */,
+				0814A78726EF87D60017D381 /* Profile.storyboard */,
+				0814A78926EF87E40017D381 /* Activity.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		0814A78B26EF88190017D381 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0814A78C26EF88310017D381 /* HomeViewController.swift */,
+				0814A78E26EF88400017D381 /* SearchViewController.swift */,
+				0814A79026EF884C0017D381 /* NewPostViewController.swift */,
+				0814A79226EF88560017D381 /* ProfileViewController.swift */,
+				0814A79426EF88610017D381 /* ActivityViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +209,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0814A78826EF87D60017D381 /* Profile.storyboard in Resources */,
+				0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */,
 				0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */,
 				0814A76726EF863C0017D381 /* Assets.xcassets in Resources */,
-				0814A76526EF863B0017D381 /* Main.storyboard in Resources */,
+				0814A78A26EF87E40017D381 /* Activity.storyboard in Resources */,
+				0814A78426EF87B40017D381 /* Search.storyboard in Resources */,
+				0814A78226EF87990017D381 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +226,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0814A77C26EF86520017D381 /* ActivityData.swift in Sources */,
+				0814A78F26EF88400017D381 /* SearchViewController.swift in Sources */,
+				0814A77D26EF86520017D381 /* SimpleCameraProtocol.swift in Sources */,
 				0814A76226EF863B0017D381 /* ViewController.swift in Sources */,
+				0814A77B26EF86520017D381 /* FeedData.swift in Sources */,
+				0814A79126EF884C0017D381 /* NewPostViewController.swift in Sources */,
+				0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */,
+				0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */,
 				0814A75E26EF863B0017D381 /* AppDelegate.swift in Sources */,
+				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
+				0814A79326EF88560017D381 /* ProfileViewController.swift in Sources */,
+				0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */,
 				0814A76026EF863B0017D381 /* SceneDelegate.swift in Sources */,
+				0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0814A76326EF863B0017D381 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0814A76426EF863B0017D381 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0814A76826EF863C0017D381 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
