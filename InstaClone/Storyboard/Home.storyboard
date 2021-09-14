@@ -15,9 +15,25 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uiF-Sw-daj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uiF-Sw-daj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="G3Q-Ca-MZp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="uiF-Sw-daj" secondAttribute="bottom" id="U0g-Cz-xHn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uiF-Sw-daj" secondAttribute="trailing" id="cJo-VZ-9mJ"/>
+                            <constraint firstItem="uiF-Sw-daj" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oMR-pC-l3R"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="uiF-Sw-daj" id="KkF-rf-HLw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
