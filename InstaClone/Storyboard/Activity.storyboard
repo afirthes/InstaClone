@@ -15,13 +15,44 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72F-Nf-VyU" customClass="CustomSegmentedControl" customModule="InstaClone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="HPl-ma-1nw"/>
+                                    <constraint firstAttribute="height" constant="60" id="dlm-hO-KYg"/>
+                                </constraints>
+                            </view>
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-b5-Y5o">
+                                <rect key="frame" x="0.0" y="68" width="414" height="828"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="LOj-ID-h0W"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bHC-1v-IHa"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LJv-b5-Y5o" firstAttribute="top" secondItem="72F-Nf-VyU" secondAttribute="bottom" id="DKA-V7-AXL"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EXk-yg-SHO"/>
+                            <constraint firstAttribute="bottom" secondItem="LJv-b5-Y5o" secondAttribute="bottom" id="Hj9-8a-Zn9"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="O20-xT-CVM"/>
+                            <constraint firstItem="LJv-b5-Y5o" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QG8-NV-1uA"/>
+                            <constraint firstItem="LJv-b5-Y5o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WFN-pd-eg0"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="avW-nJ-9Xj"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="m3b-tc-gA3"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="reQ-HL-0fE"/>
+                            <constraint firstItem="72F-Nf-VyU" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="zuq-j4-5QC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="LJv-b5-Y5o" id="Qc3-Wo-jMX"/>
+                        <outlet property="segmentedControl" destination="72F-Nf-VyU" id="ZkM-av-4A3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="99"/>
+            <point key="canvasLocation" x="69.565217391304358" y="98.4375"/>
         </scene>
     </scenes>
     <resources>

@@ -28,6 +28,11 @@
 		0814A79326EF88560017D381 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A79226EF88560017D381 /* ProfileViewController.swift */; };
 		0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A79426EF88610017D381 /* ActivityViewController.swift */; };
 		082AB72A26F33C4200223945 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB72926F33C4200223945 /* PhotoCollectionViewCell.swift */; };
+		082AB72C26F34A2100223945 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB72B26F34A2100223945 /* CustomSegmentedControl.swift */; };
+		082AB72F26F3544F00223945 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB72D26F3544F00223945 /* ActivityTableViewCell.swift */; };
+		082AB73026F3544F00223945 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082AB72E26F3544F00223945 /* ActivityTableViewCell.xib */; };
+		082AB73426F3726000223945 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB73326F3726000223945 /* ActivityView.swift */; };
+		082AB73626F3727200223945 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082AB73526F3727200223945 /* ActivityView.xib */; };
 		08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */; };
 		08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */; };
 		08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */; };
@@ -67,6 +72,11 @@
 		0814A79226EF88560017D381 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0814A79426EF88610017D381 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		082AB72926F33C4200223945 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		082AB72B26F34A2100223945 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		082AB72D26F3544F00223945 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		082AB72E26F3544F00223945 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		082AB73326F3726000223945 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		082AB73526F3727200223945 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesTableViewCell.xib; sourceTree = "<group>"; };
 		08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 		0814A75C26EF863B0017D381 /* InstaClone */ = {
 			isa = PBXGroup;
 			children = (
+				082AB72B26F34A2100223945 /* CustomSegmentedControl.swift */,
 				08910BEA26F1F89A00F18DAB /* CollectionLayout.swift */,
 				08910BF226F23F6400F18DAB /* TabBarDelegate.swift */,
 				082AB72926F33C4200223945 /* PhotoCollectionViewCell.swift */,
@@ -187,6 +198,7 @@
 		08910BD726EFA87F00F18DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				082AB73326F3726000223945 /* ActivityView.swift */,
 				08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */,
 				08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */,
 				08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */,
@@ -195,6 +207,9 @@
 				08910BE326F07B3100F18DAB /* FeedTableViewCell.xib */,
 				08910BE626F1F03B00F18DAB /* ExploreCollectionViewCell.swift */,
 				08910BE826F1F21300F18DAB /* SearchBarContainerView.swift */,
+				082AB72D26F3544F00223945 /* ActivityTableViewCell.swift */,
+				082AB72E26F3544F00223945 /* ActivityTableViewCell.xib */,
+				082AB73526F3727200223945 /* ActivityView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0814A78826EF87D60017D381 /* Profile.storyboard in Resources */,
+				082AB73626F3727200223945 /* ActivityView.xib in Resources */,
 				08910BE526F07B3100F18DAB /* FeedTableViewCell.xib in Resources */,
 				0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */,
 				0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */,
@@ -264,6 +280,7 @@
 				08910BE126EFAA9600F18DAB /* StoryCollectionViewCell.xib in Resources */,
 				0814A78A26EF87E40017D381 /* Activity.storyboard in Resources */,
 				08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */,
+				082AB73026F3544F00223945 /* ActivityTableViewCell.xib in Resources */,
 				0814A78426EF87B40017D381 /* Search.storyboard in Resources */,
 				0814A78226EF87990017D381 /* Home.storyboard in Resources */,
 			);
@@ -288,7 +305,9 @@
 				0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */,
 				0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */,
 				0814A75E26EF863B0017D381 /* AppDelegate.swift in Sources */,
+				082AB72F26F3544F00223945 /* ActivityTableViewCell.swift in Sources */,
 				08910BF126F2076300F18DAB /* CameraViewController.swift in Sources */,
+				082AB73426F3726000223945 /* ActivityView.swift in Sources */,
 				08910BED26F2061C00F18DAB /* NewPostPageViewController.swift in Sources */,
 				08910BE426F07B3100F18DAB /* FeedTableViewCell.swift in Sources */,
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
@@ -299,6 +318,7 @@
 				08910BE726F1F03B00F18DAB /* ExploreCollectionViewCell.swift in Sources */,
 				0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */,
 				0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */,
+				082AB72C26F34A2100223945 /* CustomSegmentedControl.swift in Sources */,
 				08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
