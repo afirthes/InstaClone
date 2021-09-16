@@ -6,18 +6,18 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
 
     var window: UIWindow?
     
     let tabBarDelegate = TabBarDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        FirebaseApp.configure()
 
         let tabController = UITabBarController()
         
@@ -67,17 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().backgroundColor = UIColor.white
-        
-        
 
         self.window?.rootViewController = tabController
         
         return true
     }
-
-
-
-
 
 }
 
