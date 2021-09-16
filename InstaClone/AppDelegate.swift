@@ -12,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
+    
+    let tabBarDelegate = TabBarDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -49,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabController.viewControllers = vcs
         tabController.tabBar.isTranslucent = false
+        tabController.delegate = tabBarDelegate
         
         if let items = tabController.tabBar.items {
             for item in items {
@@ -64,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().backgroundColor = UIColor.white
+        
+        
 
         self.window?.rootViewController = tabController
         
