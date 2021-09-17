@@ -5,6 +5,7 @@
 //  Created by Afir Thes on 15.09.2021.
 //
 import UIKit
+import FirebaseAuth
 
 class ProfileHeaderTableViewCell: UITableViewCell {
     
@@ -58,7 +59,7 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     
     func logout() {
         
-        print("logout")
+        Helper.logout()
         
     }
     

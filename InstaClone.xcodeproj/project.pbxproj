@@ -38,6 +38,11 @@
 		082AB73E26F3B38F00223945 /* ProfileViewStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB73C26F3B38F00223945 /* ProfileViewStyleTableViewCell.swift */; };
 		082AB74026F3C7CC00223945 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB73F26F3C7CC00223945 /* Helper.swift */; };
 		082AB74226F3C8DB00223945 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74126F3C8DB00223945 /* Extension.swift */; };
+		082AB74526F489CC00223945 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74326F489CB00223945 /* LoginViewController.swift */; };
+		082AB74626F489CC00223945 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74426F489CC00223945 /* SignupViewController.swift */; };
+		082AB74926F48A9400223945 /* AnimatedGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74726F48A9400223945 /* AnimatedGradient.swift */; };
+		082AB74A26F48A9400223945 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74826F48A9400223945 /* Protocols.swift */; };
+		082AB74C26F48B0B00223945 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082AB74B26F48B0B00223945 /* Login.storyboard */; };
 		08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */; };
 		08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */; };
 		08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */; };
@@ -88,6 +93,11 @@
 		082AB73C26F3B38F00223945 /* ProfileViewStyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewStyleTableViewCell.swift; sourceTree = "<group>"; };
 		082AB73F26F3C7CC00223945 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		082AB74126F3C8DB00223945 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		082AB74326F489CB00223945 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		082AB74426F489CC00223945 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		082AB74726F48A9400223945 /* AnimatedGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedGradient.swift; sourceTree = "<group>"; };
+		082AB74826F48A9400223945 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		082AB74B26F48B0B00223945 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesTableViewCell.xib; sourceTree = "<group>"; };
 		08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +160,8 @@
 				0814A77526EF86520017D381 /* Library */,
 				0814A75D26EF863B0017D381 /* AppDelegate.swift */,
 				0814A76126EF863B0017D381 /* ViewController.swift */,
+				082AB74726F48A9400223945 /* AnimatedGradient.swift */,
+				082AB74826F48A9400223945 /* Protocols.swift */,
 				0814A76626EF863C0017D381 /* Assets.xcassets */,
 				0814A76826EF863C0017D381 /* LaunchScreen.storyboard */,
 				0814A76B26EF863C0017D381 /* Info.plist */,
@@ -196,6 +208,7 @@
 				0814A78326EF87B40017D381 /* Search.storyboard */,
 				0814A78526EF87C60017D381 /* NewPost.storyboard */,
 				0814A78926EF87E40017D381 /* Activity.storyboard */,
+				082AB74B26F48B0B00223945 /* Login.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -209,6 +222,8 @@
 				0814A79226EF88560017D381 /* ProfileViewController.swift */,
 				0814A79426EF88610017D381 /* ActivityViewController.swift */,
 				08910BEC26F2061C00F18DAB /* NewPostPageViewController.swift */,
+				082AB74326F489CB00223945 /* LoginViewController.swift */,
+				082AB74426F489CC00223945 /* SignupViewController.swift */,
 				08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */,
 				08910BF026F2076300F18DAB /* CameraViewController.swift */,
 			);
@@ -314,6 +329,7 @@
 			files = (
 				082AB73826F39CBD00223945 /* GoogleService-Info.plist in Resources */,
 				082AB73626F3727200223945 /* ActivityView.xib in Resources */,
+				082AB74C26F48B0B00223945 /* Login.storyboard in Resources */,
 				08910BE526F07B3100F18DAB /* FeedTableViewCell.xib in Resources */,
 				0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */,
 				0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */,
@@ -389,7 +405,9 @@
 				08910BE926F1F21300F18DAB /* SearchBarContainerView.swift in Sources */,
 				0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */,
 				0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */,
+				082AB74526F489CC00223945 /* LoginViewController.swift in Sources */,
 				0814A75E26EF863B0017D381 /* AppDelegate.swift in Sources */,
+				082AB74926F48A9400223945 /* AnimatedGradient.swift in Sources */,
 				082AB72F26F3544F00223945 /* ActivityTableViewCell.swift in Sources */,
 				08910BF126F2076300F18DAB /* CameraViewController.swift in Sources */,
 				082AB73E26F3B38F00223945 /* ProfileViewStyleTableViewCell.swift in Sources */,
@@ -400,10 +418,12 @@
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
 				08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */,
 				082AB72A26F33C4200223945 /* PhotoCollectionViewCell.swift in Sources */,
+				082AB74626F489CC00223945 /* SignupViewController.swift in Sources */,
 				0814A79326EF88560017D381 /* ProfileViewController.swift in Sources */,
 				08910BEB26F1F89A00F18DAB /* CollectionLayout.swift in Sources */,
 				08910BE726F1F03B00F18DAB /* ExploreCollectionViewCell.swift in Sources */,
 				0814A79526EF88610017D381 /* ActivityViewController.swift in Sources */,
+				082AB74A26F48A9400223945 /* Protocols.swift in Sources */,
 				082AB73D26F3B38F00223945 /* ProfileHeaderTableViewCell.swift in Sources */,
 				0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */,
 				082AB72C26F34A2100223945 /* CustomSegmentedControl.swift in Sources */,
