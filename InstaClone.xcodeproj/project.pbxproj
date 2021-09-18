@@ -19,7 +19,6 @@
 		0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A77926EF86520017D381 /* SimpleCamera.swift */; };
 		0814A78226EF87990017D381 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78126EF87990017D381 /* Home.storyboard */; };
 		0814A78426EF87B40017D381 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78326EF87B40017D381 /* Search.storyboard */; };
-		0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78526EF87C60017D381 /* NewPost.storyboard */; };
 		0814A78A26EF87E40017D381 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0814A78926EF87E40017D381 /* Activity.storyboard */; };
 		0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A78C26EF88310017D381 /* HomeViewController.swift */; };
 		0814A78F26EF88400017D381 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814A78E26EF88400017D381 /* SearchViewController.swift */; };
@@ -43,6 +42,9 @@
 		082AB74926F48A9400223945 /* AnimatedGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74726F48A9400223945 /* AnimatedGradient.swift */; };
 		082AB74A26F48A9400223945 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AB74826F48A9400223945 /* Protocols.swift */; };
 		082AB74C26F48B0B00223945 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082AB74B26F48B0B00223945 /* Login.storyboard */; };
+		08421D4A26F5B83D005700D4 /* NewPostPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08421D4926F5B83D005700D4 /* NewPostPageViewController.swift */; };
+		08421D4C26F5B8D0005700D4 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */; };
+		08421D4E26F5BAF3005700D4 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08421D4D26F5BAF3005700D4 /* NewPost.storyboard */; };
 		08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */; };
 		08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */; };
 		08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */; };
@@ -52,7 +54,6 @@
 		08910BE726F1F03B00F18DAB /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BE626F1F03B00F18DAB /* ExploreCollectionViewCell.swift */; };
 		08910BE926F1F21300F18DAB /* SearchBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BE826F1F21300F18DAB /* SearchBarContainerView.swift */; };
 		08910BEB26F1F89A00F18DAB /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BEA26F1F89A00F18DAB /* CollectionLayout.swift */; };
-		08910BED26F2061C00F18DAB /* NewPostPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BEC26F2061C00F18DAB /* NewPostPageViewController.swift */; };
 		08910BEF26F2067200F18DAB /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */; };
 		08910BF126F2076300F18DAB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BF026F2076300F18DAB /* CameraViewController.swift */; };
 		08910BF326F23F6400F18DAB /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BF226F23F6400F18DAB /* TabBarDelegate.swift */; };
@@ -74,7 +75,6 @@
 		0814A77926EF86520017D381 /* SimpleCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCamera.swift; sourceTree = "<group>"; };
 		0814A78126EF87990017D381 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0814A78326EF87B40017D381 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		0814A78526EF87C60017D381 /* NewPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		0814A78926EF87E40017D381 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		0814A78C26EF88310017D381 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0814A78E26EF88400017D381 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +98,9 @@
 		082AB74726F48A9400223945 /* AnimatedGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedGradient.swift; sourceTree = "<group>"; };
 		082AB74826F48A9400223945 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		082AB74B26F48B0B00223945 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		08421D4926F5B83D005700D4 /* NewPostPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostPageViewController.swift; sourceTree = "<group>"; };
+		08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		08421D4D26F5BAF3005700D4 /* NewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesTableViewCell.xib; sourceTree = "<group>"; };
 		08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -107,7 +110,6 @@
 		08910BE626F1F03B00F18DAB /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		08910BE826F1F21300F18DAB /* SearchBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarContainerView.swift; sourceTree = "<group>"; };
 		08910BEA26F1F89A00F18DAB /* CollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
-		08910BEC26F2061C00F18DAB /* NewPostPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPageViewController.swift; sourceTree = "<group>"; };
 		08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		08910BF026F2076300F18DAB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		08910BF226F23F6400F18DAB /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
@@ -205,8 +207,8 @@
 			children = (
 				082AB73926F3B28200223945 /* Profile.storyboard */,
 				0814A78126EF87990017D381 /* Home.storyboard */,
+				08421D4D26F5BAF3005700D4 /* NewPost.storyboard */,
 				0814A78326EF87B40017D381 /* Search.storyboard */,
-				0814A78526EF87C60017D381 /* NewPost.storyboard */,
 				0814A78926EF87E40017D381 /* Activity.storyboard */,
 				082AB74B26F48B0B00223945 /* Login.storyboard */,
 			);
@@ -219,13 +221,14 @@
 				0814A78C26EF88310017D381 /* HomeViewController.swift */,
 				0814A78E26EF88400017D381 /* SearchViewController.swift */,
 				0814A79026EF884C0017D381 /* NewPostViewController.swift */,
+				08421D4926F5B83D005700D4 /* NewPostPageViewController.swift */,
 				0814A79226EF88560017D381 /* ProfileViewController.swift */,
 				0814A79426EF88610017D381 /* ActivityViewController.swift */,
-				08910BEC26F2061C00F18DAB /* NewPostPageViewController.swift */,
 				082AB74326F489CB00223945 /* LoginViewController.swift */,
 				082AB74426F489CC00223945 /* SignupViewController.swift */,
 				08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */,
 				08910BF026F2076300F18DAB /* CameraViewController.swift */,
+				08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -331,7 +334,6 @@
 				082AB73626F3727200223945 /* ActivityView.xib in Resources */,
 				082AB74C26F48B0B00223945 /* Login.storyboard in Resources */,
 				08910BE526F07B3100F18DAB /* FeedTableViewCell.xib in Resources */,
-				0814A78626EF87C60017D381 /* NewPost.storyboard in Resources */,
 				0814A76A26EF863C0017D381 /* LaunchScreen.storyboard in Resources */,
 				082AB73A26F3B28200223945 /* Profile.storyboard in Resources */,
 				0814A76726EF863C0017D381 /* Assets.xcassets in Resources */,
@@ -339,6 +341,7 @@
 				0814A78A26EF87E40017D381 /* Activity.storyboard in Resources */,
 				08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */,
 				082AB73026F3544F00223945 /* ActivityTableViewCell.xib in Resources */,
+				08421D4E26F5BAF3005700D4 /* NewPost.storyboard in Resources */,
 				0814A78426EF87B40017D381 /* Search.storyboard in Resources */,
 				0814A78226EF87990017D381 /* Home.storyboard in Resources */,
 			);
@@ -403,6 +406,7 @@
 				082AB74226F3C8DB00223945 /* Extension.swift in Sources */,
 				0814A79126EF884C0017D381 /* NewPostViewController.swift in Sources */,
 				08910BE926F1F21300F18DAB /* SearchBarContainerView.swift in Sources */,
+				08421D4A26F5B83D005700D4 /* NewPostPageViewController.swift in Sources */,
 				0814A77F26EF86520017D381 /* SimpleCamera.swift in Sources */,
 				0814A78D26EF88310017D381 /* HomeViewController.swift in Sources */,
 				082AB74526F489CC00223945 /* LoginViewController.swift in Sources */,
@@ -412,7 +416,6 @@
 				08910BF126F2076300F18DAB /* CameraViewController.swift in Sources */,
 				082AB73E26F3B38F00223945 /* ProfileViewStyleTableViewCell.swift in Sources */,
 				082AB73426F3726000223945 /* ActivityView.swift in Sources */,
-				08910BED26F2061C00F18DAB /* NewPostPageViewController.swift in Sources */,
 				082AB74026F3C7CC00223945 /* Helper.swift in Sources */,
 				08910BE426F07B3100F18DAB /* FeedTableViewCell.swift in Sources */,
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
@@ -427,6 +430,7 @@
 				082AB73D26F3B38F00223945 /* ProfileHeaderTableViewCell.swift in Sources */,
 				0814A77E26EF86520017D381 /* SimpleCameraView.swift in Sources */,
 				082AB72C26F34A2100223945 /* CustomSegmentedControl.swift in Sources */,
+				08421D4C26F5B8D0005700D4 /* CreatePostViewController.swift in Sources */,
 				08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

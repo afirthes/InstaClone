@@ -34,12 +34,32 @@ class NewPostViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("newPage"), object: NewPostPagesToShow.camera)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
-        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        NotificationCenter.default.addObserver(self, selector: #selector(NewPostViewController.moveToCreatePost(notification:)), name: NSNotification.Name(rawValue: "createNewPost"), object: nil)
+    }
+    
+    @objc func moveToCreatePost(notification: NSNotification) {
+        if let receivedObject = notification.object as? UIImage {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "CreatePost", sender: receivedObject)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreatePost" {
+            guard let postImage = sender as? UIImage else { return }
+            let destinationVC = segue.destination as! CreatePostViewController
+            destinationVC.postImage = postImage
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -48,6 +68,11 @@ class NewPostViewController: UIViewController {
     
     @objc func cancelButtonPressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "createNewPost"), object: nil)
     }
 
 }

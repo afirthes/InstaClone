@@ -9,7 +9,7 @@ import UIKit
 
 import Photos
 
-class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
@@ -17,7 +17,7 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
         if PHPhotoLibrary.authorizationStatus() == .authorized {
@@ -90,6 +90,25 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let asset = images[indexPath.row]
+        let manager = PHImageManager.default()
+        
+        manager.requestImage(for: asset,
+                             targetSize: PHImageManagerMaximumSize,
+                             contentMode: .aspectFit,
+                             options: nil) { (result, _) in
+                                
+            // Приходит 2 события - первое оригинальный рисунок, второй resized
+            if let image = result, image.size.height > 200 {
+                NotificationCenter.default.post(name: NSNotification.Name("createNewPost"), object: result)
+            }
+                                
+        }
+        
     }
     
 }
