@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
@@ -98,7 +99,7 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        //let spinner = UIViewController.displayLoading(withView: self.view)
+        let spinner = UIViewController.displayLoading(withView: self.view)
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user: AuthDataResult?, error: Error?) -> Void in
             
@@ -140,7 +141,7 @@ class LoginViewController: UIViewController {
                 
                 Helper.login()
                 
-                //UIViewController.removeLoading(spinner: spinner)
+                UIViewController.removeLoading(spinner: spinner)
             }
             
         }

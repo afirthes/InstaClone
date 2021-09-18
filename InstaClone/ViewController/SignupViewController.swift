@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
     
@@ -95,7 +97,49 @@ class SignupViewController: UIViewController {
     
     @IBAction func signUpButtonDidTouch(_ sender: Any) {
         
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
         
+        let spinner = UIViewController.displayLoading(withView: self.view)
+        
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+            guard let strongSelf = self else { return }
+            if let error = error as NSError? {
+                let alert = Helper.errorAlert(title: "Error!", message: error.localizedDescription)
+                strongSelf.present(alert, animated: true, completion: nil)
+                return;
+            }
+            
+            guard let userId = user?.user.uid else { return }
+            
+            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+                DispatchQueue.main.async {
+                    UIViewController.removeLoading(spinner: spinner)
+                }
+                
+                if error == nil {
+                    
+                    let userRef = Database.database(url: "https://instaclone-b0cdb-default-rtdb.europe-west1.firebasedatabase.app")
+                        .reference()
+                        .child("users")
+                        .child(userId)
+                    
+                    userRef.updateChildValues([
+                        "username": username,
+                        "bio": "Welcome to my profile!",
+                    ])
+                    
+                    DispatchQueue.main.async {
+                        Helper.login()
+                    }
+                } else if let error = error {
+                    let alert = Helper.errorAlert(title: "Error!", message: error.localizedDescription)
+                    strongSelf.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+        }
         
     }
     
