@@ -113,7 +113,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="121" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c9Q-WB-PHt">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c9Q-WB-PHt">
                                                     <rect key="frame" x="0.0" y="0.0" width="121" height="130"/>
                                                 </imageView>
                                             </subviews>
@@ -207,7 +207,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-HB-Z8G">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="inP-Od-tzN">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="inP-Od-tzN">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="inP-Od-tzN" secondAttribute="height" multiplier="1:1" id="61E-5l-qqG"/>
@@ -242,6 +242,7 @@
                                             <constraint firstItem="Wh7-4d-dYS" firstAttribute="leading" secondItem="SqI-HB-Z8G" secondAttribute="leading" constant="20" id="0Gs-8d-3tc"/>
                                             <constraint firstAttribute="trailing" secondItem="Wh7-4d-dYS" secondAttribute="trailing" constant="20" id="0sF-Ua-HSW"/>
                                             <constraint firstAttribute="bottom" secondItem="Wh7-4d-dYS" secondAttribute="bottom" constant="30" id="3nv-AP-CYG"/>
+                                            <constraint firstItem="inP-Od-tzN" firstAttribute="width" secondItem="SqI-HB-Z8G" secondAttribute="width" id="5Wh-jg-2fw"/>
                                             <constraint firstAttribute="trailing" secondItem="6pn-UE-OJO" secondAttribute="trailing" constant="10" id="M3w-cL-TCP"/>
                                             <constraint firstItem="6pn-UE-OJO" firstAttribute="top" secondItem="inP-Od-tzN" secondAttribute="bottom" constant="10" id="Soh-rd-OQD"/>
                                             <constraint firstItem="inP-Od-tzN" firstAttribute="leading" secondItem="SqI-HB-Z8G" secondAttribute="leading" id="g0b-6H-rpG"/>
