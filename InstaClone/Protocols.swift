@@ -17,3 +17,4 @@ protocol ActivityDelegate1: AnyObject {
 protocol ProfileHeaderDelegate: AnyObject {
     func profileImageDidTouch()
 }
+

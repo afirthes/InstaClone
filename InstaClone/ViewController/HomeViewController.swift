@@ -25,12 +25,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        var rightBarItemImage = UIImage(named: "send_nav_icon")
-        rightBarItemImage = rightBarItemImage?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: rightBarItemImage, style: .plain, target: nil, action: nil)
         var leftBarItemImage = UIImage(named: "camera_nav_icon")
         leftBarItemImage = leftBarItemImage?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftBarItemImage, style: .plain, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftBarItemImage, style: .plain, target: self, action: #selector(newPostButtonDidTouch))
         let profileImageView = UIImageView(image: UIImage(named: "logo_nav_icon"))
         self.navigationItem.titleView = profileImageView
     }
@@ -40,10 +37,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StoriesTableViewCell") as! StoriesTableViewCell
             return cell
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell") as! FeedTableViewCell
         let currentIndex = indexPath.row - 1
         let postData = posts[currentIndex]
@@ -53,7 +52,49 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.likesCountLabel.text = "\(postData.likesCount) likes"
         cell.postCommentLabel.text = postData.postComment
         cell.userNameTitleButton.setTitle(postData.user.name, for: .normal)
-        cell.commentCountButton.setTitle("View all \(postData.commentCount) comments", for: .normal)
+        
+        if postData.comments.count > 0 {
+            let commentTitle = postData.comments.count == 1 ? "View 1 comment" : "View all \(postData.comments.count) comments"
+            cell.commentCountButton.setTitle(commentTitle, for: .normal)
+            cell.commentCountButton.isEnabled = true
+        }
+        else {
+            cell.commentCountButton.setTitle("0 comments", for: .normal)
+            cell.commentCountButton.isEnabled = false
+        }
+        cell.feedDelegate = self
+        cell.profileDelegate = self
+        cell.post = postData
         return cell
     }
+    
+    @objc func newPostButtonDidTouch() {
+        let newPostStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
+        let newPostVC = newPostStoryboard.instantiateViewController(withIdentifier: "NewPost") as! NewPostViewController
+        let navController = UINavigationController(rootViewController: newPostVC)
+        present(navController, animated: true, completion: nil)
+    }
+
+}
+
+extension HomeViewController: FeedDataDelegate {
+    
+    func commentsDidTouch(post: Post) {
+        let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
+        let postVC = postStoryboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
+        postVC.post = post
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+    
+}
+
+extension HomeViewController: ProfileDelegate {
+    
+    func userNameDidTouch() {
+        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        profileVC.profileType = .otherUser
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
 }

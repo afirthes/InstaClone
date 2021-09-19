@@ -20,7 +20,6 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likesButton: UIButton!
     
-    var post: Post?
     
     var postModel: PostModel?
     
@@ -28,7 +27,9 @@ class FeedTableViewCell: UITableViewCell {
     
     var currentUser: UserModel?
     
-    var feeDelegate: FeedDataDelegate?
+    var post: Post?
+    weak var feedDelegate: FeedDataDelegate?
+    weak var profileDelegate: ProfileDelegate?
     
     
     var userRef: DatabaseReference? {
@@ -79,7 +80,7 @@ class FeedTableViewCell: UITableViewCell {
     
     func resetLikes() {
         likesButton.isSelected = false
-        likesCountLabel.text = "0"
+        likesCountLabel.text = "0 likes"
     }
     
     func resetUser() {
@@ -126,14 +127,14 @@ class FeedTableViewCell: UITableViewCell {
             }
             
         }
-        likesCountLabel.text = "\(likesModel.likeCount)"
+        likesCountLabel.text = "\(likesModel.likeCount) likes"
     
     }
     
     @IBAction func commentButtonDidTouch(_ sender: Any) {
         guard let post = post else { return }
         
-        feeDelegate?.commentsDidTouch(post: post)
+        self.feedDelegate?.commentsDidTouch(post: post)
     }
     
     
