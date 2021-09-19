@@ -79,10 +79,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension HomeViewController: FeedDataDelegate {
     
-    func commentsDidTouch(post: Post) {
+    func commentsDidTouch(post: PostModel, likesModel: LikesModel, userModel: UserModel) {
         let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
         let postVC = postStoryboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
-        postVC.post = post
+        postVC.postModel = post
+        postVC.likesModel = likesModel
+        postVC.userModel = userModel
         navigationController?.pushViewController(postVC, animated: true)
     }
     

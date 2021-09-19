@@ -259,7 +259,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             feedTableViewCell.likesRef = LikesModel.collection.child(post.key)
             feedTableViewCell.postModel = post
             
-            //feedTableViewCell.feeDelegate = self
+            feedTableViewCell.feedDelegate = self
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MM, yyyy hh:mm"
@@ -275,6 +275,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
 
+}
+
+extension ProfileViewController: FeedDataDelegate {
+    
+    func commentsDidTouch(post: PostModel, likesModel: LikesModel, userModel: UserModel) {
+        let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
+        let postVC = postStoryboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
+        postVC.postModel = post
+        postVC.likesModel = likesModel
+        postVC.userModel = userModel
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+    
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

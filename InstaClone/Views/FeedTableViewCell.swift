@@ -76,6 +76,7 @@ class FeedTableViewCell: UITableViewCell {
         
         likesCountLabel.text = "\(likes.likeCount)"
         likesButton.isSelected = likes.postDidLike
+        
     }
     
     func resetLikes() {
@@ -132,9 +133,20 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     @IBAction func commentButtonDidTouch(_ sender: Any) {
-        guard let post = post else { return }
+        guard let postModel = postModel else { return }
+        guard let currentUser = currentUser else { return }
+        guard let likesModel = likesModel else { return }
         
-        self.feedDelegate?.commentsDidTouch(post: post)
+        self.feedDelegate?.commentsDidTouch(post: postModel, likesModel: likesModel, userModel: currentUser)
+    }
+    
+    
+    @IBAction func viewCommentsButtonDidTouch(_ sender: Any) {
+        guard let postModel = postModel else { return }
+        guard let currentUser = currentUser else { return }
+        guard let likesModel = likesModel else { return }
+        
+        self.feedDelegate?.commentsDidTouch(post: postModel, likesModel: likesModel, userModel: currentUser)
     }
     
     

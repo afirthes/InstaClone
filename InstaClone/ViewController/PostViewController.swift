@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import SDWebImage
 
 class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -14,6 +16,16 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var commentTextView: UITextView!
     
     var post: Post!
+    
+    var postModel: PostModel!
+    
+    var userModel: UserModel!
+    
+    var likesModel: LikesModel!
+    
+    var postId: String!
+    
+    var comments: NSMutableArray = []
     
     var commentTextViewIsActive: Bool = false
 
@@ -33,6 +45,25 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         commentTextView.font = UIFont(name: "Roboto-Regular", size: 15)
         commentTextView.inputAccessoryView = nil
         commentTextView.inputView = nil
+    }
+    
+    func loadData() {
+        
+        let commentsRef = CommentsModel.collection.child(postModel.key)
+        
+        commentsRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            strongSelf.comments.removeAllObjects()
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot  else { continue }
+                guard let comment = CommentsModel(snapshot) else { continue }
+                strongSelf.comments.insert(comment, at: 0)
+            }
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+        }
+        
     }
     
     @objc func dismissKeyboard() {
@@ -92,11 +123,22 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as! PostTableViewCell
             cell.profileImage.image = post.user.profileImage
-            cell.postImage.image = post.postImage
-            cell.dateLabel.text = post.datePosted
-            cell.likesCountLabel.text = "\(post.likesCount) likes"
-            cell.postCommentLabel.text = post.postComment
-            cell.userNameTitleButton.setTitle(post.user.name, for: .normal)
+            cell.postImage.sd_cancelCurrentImageLoad()
+            cell.postImage.sd_setImage(with: postModel.imageURL, completed: nil)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM, yyyy hh:mm"
+            cell.dateLabel.text = dateFormatter.string(from: postModel.date)
+            
+            //cell.likesCountLabel.text = "\(post.likesCount) likes"
+            
+            cell.postCommentLabel.text = postModel.caption
+            
+            //cell.userNameTitleButton.setTitle(post.user.name, for: .normal)
+            
+            cell.likesModel = likesModel
+            cell.postModel = postModel
+            cell.currentUserModel = userModel
             cell.profileDelegate = self
             cell.feedDelegate = self
             return cell
@@ -138,13 +180,9 @@ extension PostViewController: ProfileDelegate {
 }
 
 extension PostViewController: FeedDataDelegate {
-    
-    func commentsDidTouch(post: Post) {
-        
-        
+    func commentsDidTouch(post: PostModel, likesModel: LikesModel, userModel: UserModel) {
         
     }
-    
 }
 
 extension PostViewController: UITextViewDelegate {

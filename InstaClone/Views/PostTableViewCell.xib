@@ -105,6 +105,7 @@
             <viewLayoutGuide key="safeArea" id="Os4-E3-xM6"/>
             <connections>
                 <outlet property="dateLabel" destination="giL-Zg-BZD" id="KSM-ce-d1Y"/>
+                <outlet property="likesButton" destination="z6x-34-eV7" id="jN2-GV-T9w"/>
                 <outlet property="likesCountLabel" destination="u9o-or-fW9" id="HdB-3W-jRd"/>
                 <outlet property="postCommentLabel" destination="Nal-DK-fOH" id="MOx-HC-c8X"/>
                 <outlet property="postImage" destination="m3z-Gc-cyk" id="ISN-vy-Ju5"/>

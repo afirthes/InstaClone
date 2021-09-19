@@ -2,7 +2,7 @@
 import Foundation
 
 protocol FeedDataDelegate: AnyObject {
-    func commentsDidTouch(post: Post)
+    func commentsDidTouch(post: PostModel, likesModel: LikesModel, userModel: UserModel)
 }
 
 protocol ProfileDelegate: AnyObject {
