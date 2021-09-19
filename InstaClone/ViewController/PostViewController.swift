@@ -29,6 +29,8 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     var comments: NSMutableArray = []
     
     var commentTextViewIsActive: Bool = false
+    
+    var newQuery: DatabaseQuery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,21 +54,47 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func loadData() {
         
-        let commentsRef = CommentsModel.collection.child(postModel.key)
+        let commentQuery = CommentsModel.collection.child(postModel.key).queryOrderedByKey()
         
-        commentsRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+        commentQuery.observeSingleEvent(of: .value) { [weak self] (snapshot) in
             guard let strongSelf = self else { return }
             strongSelf.comments.removeAllObjects()
             for item in snapshot.children {
                 guard let snapshot = item as? DataSnapshot  else { continue }
                 guard let comment = CommentsModel(snapshot) else { continue }
-                strongSelf.comments.insert(comment, at: 0)
+                strongSelf.comments.insert(comment, at: strongSelf.comments.count)
             }
+            
+            let lastChild = snapshot.children.allObjects.last as? DataSnapshot
+            strongSelf.objserveNewItems(lastChild)
+            
             DispatchQueue.main.async {
                 strongSelf.tableView.reloadData()
             }
         }
-        
+    }
+    
+    func objserveNewItems(_ lastChild: DataSnapshot?) {
+        newQuery?.removeAllObservers()
+        newQuery = CommentsModel.collection.child(postModel.key).queryOrderedByKey()
+        if let startKey = lastChild?.key {
+            newQuery = newQuery?.queryStarting(atValue: startKey)
+        }
+        newQuery?.observe(.childAdded, with: { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            if snapshot.key != lastChild?.key {
+                if let comment = CommentsModel(snapshot) {
+                    strongSelf.comments.insert(comment, at: strongSelf.comments.count)
+                    let lastIndex = IndexPath(row: strongSelf.comments.count - 1, section: 1)
+                    // 0 - post, 1 - comments
+                    DispatchQueue.main.async {
+                        strongSelf.tableView.insertRows(at: [lastIndex], with: .bottom)
+                        strongSelf.tableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+                    }
+                    
+                }
+            }
+        })
     }
     
     @objc func dismissKeyboard() {
@@ -170,10 +198,14 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let comment = commentTextView.text else { return }
         guard let userId = Auth.auth().currentUser?.uid else { return }
         CommentsModel.new(comment: comment, userId: userId, postId: postModel.key)
+        
+        commentTextView.text = nil
+        view.endEditing(true) // hide keyboard
     }
     
     deinit {
         print("Post view controller did deinit")
+        newQuery?.removeAllObservers()
     }
 }
 
