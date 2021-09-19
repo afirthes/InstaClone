@@ -81,5 +81,19 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let post = posts[indexPath.row]
+        
+        let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
+        
+        let postVC = postStoryboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
+        
+        postVC.post = post
+        
+        navigationController?.pushViewController(postVC, animated: true)
+        
+    }
 
 }

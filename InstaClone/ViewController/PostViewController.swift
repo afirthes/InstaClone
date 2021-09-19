@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import SDWebImage
+import FirebaseAuth
 
 class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -45,6 +46,8 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         commentTextView.font = UIFont(name: "Roboto-Regular", size: 15)
         commentTextView.inputAccessoryView = nil
         commentTextView.inputView = nil
+        
+        loadData()
     }
     
     func loadData() {
@@ -100,7 +103,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
             return 1
         }
         else {
-            return post.comments.count
+            return comments.count
         }
         
     }
@@ -121,8 +124,11 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            
+            
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as! PostTableViewCell
-            cell.profileImage.image = post.user.profileImage
+            //cell.profileImage.image = post.user.profileImage
             cell.postImage.sd_cancelCurrentImageLoad()
             cell.postImage.sd_setImage(with: postModel.imageURL, completed: nil)
             
@@ -144,28 +150,31 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
         
-        let comment = post.comments[indexPath.row]
+       
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
-        cell.commentLabel.text = comment.details
+        
+        let comment = comments[indexPath.row] as! CommentsModel
+        cell.commentLabel.text = comment.comment
         cell.commentIndex = indexPath.row
         
         //cell.delegate = self
         
-        let commentUserName: String = comment.user.name
-        let commentDetails: String = comment.details
-        let commentAttributedString = NSMutableAttributedString(string: " \(commentDetails)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)])
-        let nameString = NSMutableAttributedString(string: commentUserName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)])
-        nameString.append(commentAttributedString)
-        cell.commentLabel.attributedText = nameString
+        cell.userRef = UserModel.collection.child(comment.userId)
+        
         return cell
         
     }
     
     @IBAction func postCommentButtonDidTouch(_ sender: Any) {
-        
+        guard let comment = commentTextView.text else { return }
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        CommentsModel.new(comment: comment, userId: userId, postId: postModel.key)
     }
     
-    
+    deinit {
+        print("Post view controller did deinit")
+    }
 }
 
 extension PostViewController: ProfileDelegate {
