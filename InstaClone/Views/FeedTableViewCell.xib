@@ -51,6 +51,9 @@
                             <constraint firstAttribute="height" constant="25" id="zwp-Uh-iIS"/>
                         </constraints>
                         <state key="normal" image="like_icon"/>
+                        <connections>
+                            <action selector="likesButtonDidTouch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="blX-nU-Une"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTn-U7-dml">
                         <rect key="frame" x="73.5" y="525.5" width="25" height="25"/>
@@ -59,6 +62,9 @@
                             <constraint firstAttribute="width" secondItem="dTn-U7-dml" secondAttribute="height" multiplier="1:1" id="ovK-xW-fOJ"/>
                         </constraints>
                         <state key="normal" image="comment_icon"/>
+                        <connections>
+                            <action selector="commentButtonDidTouch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pqv-9y-1HY"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMx-ok-hc2">
                         <rect key="frame" x="123.5" y="525.5" width="28.5" height="25"/>
@@ -139,6 +145,7 @@
             <connections>
                 <outlet property="commentCountButton" destination="Oaf-oU-sSo" id="DZV-7E-QHq"/>
                 <outlet property="dateLabel" destination="9vA-bA-55I" id="tYj-OA-2dy"/>
+                <outlet property="likesButton" destination="dwd-54-mLS" id="tBX-Wh-FdD"/>
                 <outlet property="likesCountLabel" destination="UUa-rI-dll" id="cJD-Od-3jP"/>
                 <outlet property="postCommentLabel" destination="1Dq-sk-gVg" id="GpU-Ug-OHv"/>
                 <outlet property="postImage" destination="KT4-BR-wiw" id="QT1-8U-AZr"/>

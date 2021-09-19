@@ -45,6 +45,7 @@
 		08421D4A26F5B83D005700D4 /* NewPostPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08421D4926F5B83D005700D4 /* NewPostPageViewController.swift */; };
 		08421D4C26F5B8D0005700D4 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */; };
 		08421D4E26F5BAF3005700D4 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08421D4D26F5BAF3005700D4 /* NewPost.storyboard */; };
+		08421D5026F6FFF1005700D4 /* LikesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08421D4F26F6FFF1005700D4 /* LikesModel.swift */; };
 		08910BDC26EFA8D800F18DAB /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */; };
 		08910BDD26EFA8D800F18DAB /* StoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */; };
 		08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */; };
@@ -101,6 +102,7 @@
 		08421D4926F5B83D005700D4 /* NewPostPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostPageViewController.swift; sourceTree = "<group>"; };
 		08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		08421D4D26F5BAF3005700D4 /* NewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
+		08421D4F26F6FFF1005700D4 /* LikesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesModel.swift; sourceTree = "<group>"; };
 		08910BDA26EFA8D800F18DAB /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		08910BDB26EFA8D800F18DAB /* StoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesTableViewCell.xib; sourceTree = "<group>"; };
 		08910BDE26EFAA9600F18DAB /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				0814A77226EF86520017D381 /* UserData.swift */,
 				0814A77326EF86520017D381 /* FeedData.swift */,
 				0814A77426EF86520017D381 /* ActivityData.swift */,
+				08421D4F26F6FFF1005700D4 /* LikesModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				082AB74026F3C7CC00223945 /* Helper.swift in Sources */,
 				08910BE426F07B3100F18DAB /* FeedTableViewCell.swift in Sources */,
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
+				08421D5026F6FFF1005700D4 /* LikesModel.swift in Sources */,
 				08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */,
 				082AB72A26F33C4200223945 /* PhotoCollectionViewCell.swift in Sources */,
 				082AB74626F489CC00223945 /* SignupViewController.swift in Sources */,

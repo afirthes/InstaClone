@@ -256,6 +256,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             feedTableViewCell.postImage.backgroundColor = UIColor.lightGray
             
             feedTableViewCell.userRef = UserModel.collection.child(post.userId)
+            feedTableViewCell.likesRef = LikesModel.collection.child(post.key)
+            feedTableViewCell.postModel = post
+            
+            //feedTableViewCell.feeDelegate = self
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MM, yyyy hh:mm"

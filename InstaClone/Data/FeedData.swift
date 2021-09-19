@@ -105,6 +105,7 @@ class PostModel {
     var userId: String
     var caption: String
     var imageURL: URL
+    var key: String
     
     init?(_ snapshot: DataSnapshot) {
         guard let value = snapshot.value as? [String: Any] else { return nil }
@@ -118,5 +119,6 @@ class PostModel {
         self.userId = userId
         self.caption = caption
         self.imageURL = imageURL
+        self.key = snapshot.key
     }
 }

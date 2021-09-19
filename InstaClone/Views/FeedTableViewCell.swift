@@ -18,8 +18,19 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var postCommentLabel: UILabel!
     @IBOutlet weak var commentCountButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var likesButton: UIButton!
+    
+    var post: Post?
+    
+    var postModel: PostModel?
+    
+    var likesModel: LikesModel?
     
     var currentUser: UserModel?
+    
+    var feeDelegate: FeedDataDelegate?
+    
+    
     var userRef: DatabaseReference? {
         willSet {
             resetUser()
@@ -30,10 +41,45 @@ class FeedTableViewCell: UITableViewCell {
                 
                 if let user = UserModel(snapshot) {
                     strongSelf.currentUser = user
-                    strongSelf.setup(user: user)
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.setup(user: user)
+                    }
+                    
                 }
             })
         }
+    }
+    
+    var likesRef: DatabaseReference? {
+        willSet {
+            resetLikes()
+        }
+        
+        didSet {
+            likesRef?.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                guard let strongSelf = self else { return }
+                let likesModel = LikesModel(snapshot)
+                strongSelf.likesModel = likesModel
+                
+                DispatchQueue.main.async {
+                    strongSelf.setup(likes: likesModel)
+                }
+                
+            })
+        }
+    }
+    
+    func setup(likes: LikesModel?) {
+        guard let likes = likes else { return }
+        
+        likesCountLabel.text = "\(likes.likeCount)"
+        likesButton.isSelected = likes.postDidLike
+    }
+    
+    func resetLikes() {
+        likesButton.isSelected = false
+        likesCountLabel.text = "0"
     }
     
     func resetUser() {
@@ -55,9 +101,40 @@ class FeedTableViewCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         profileImage.layer.masksToBounds = true
         selectionStyle = .none
+        
+        likesButton.setImage(UIImage(named: "did_like"), for: .selected)
+        likesButton.setImage(UIImage(named: "like_icon"), for: .normal)
     }
     
+    @IBAction func likesButtonDidTouch(_ sender: Any) {
+        
+        guard let postModel = postModel else { return }
+        guard let likesModel = likesModel else { return }
     
-
+        likesModel.postDidLike = !likesModel.postDidLike
+        
+        likesButton.isSelected = likesModel.postDidLike
+        
+        if likesModel.postDidLike {
+            LikesModel.postLiked(postModel.key)
+            likesModel.likeCount += 1
+            
+        } else {
+            LikesModel.postUnLiked(postModel.key)
+            if likesModel.likeCount > 0 {
+                likesModel.likeCount -= 1
+            }
+            
+        }
+        likesCountLabel.text = "\(likesModel.likeCount)"
+    
+    }
+    
+    @IBAction func commentButtonDidTouch(_ sender: Any) {
+        guard let post = post else { return }
+        
+        feeDelegate?.commentsDidTouch(post: post)
+    }
+    
     
 }
