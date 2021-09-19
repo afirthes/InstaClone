@@ -20,10 +20,17 @@ enum ProfileType {
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var posts: [Post] = [Post]()
+    var posts: NSMutableArray = []
+    var userPostsRef: DatabaseReference? {
+        guard let userId = Auth.auth().currentUser?.uid else { return nil }
+        return UserModel.personalFeed.child(userId)
+    }
     var profileType: ProfileType = .personal
     var user: UserModel?
     private let imagePicker = UIImagePickerController()
+    
+    let PAGINATION_COUNT: UInt = 5
+    
     lazy var progressIndicator: UIProgressView = {
         let _progressIndicator = UIProgressView()
         _progressIndicator.trackTintColor = UIColor.red
@@ -86,10 +93,37 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             UIViewController.removeLoading(spinner: spinner)
             guard let user = UserModel(snapshot) else { return }
             strongSelf.user = user
+            
+            
+            /*
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+            */
+            
+            strongSelf.getUserPosts()
+        }
+    }
+    
+    func getUserPosts() {
+        
+        guard let userPostsRef = userPostsRef else { return }
+        let userReaQuery = userPostsRef.queryOrderedByKey().queryLimited(toLast: PAGINATION_COUNT)
+        userReaQuery.observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let strongSelf = self else { return }
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot else { continue }
+                guard let post = PostModel(snapshot) else { continue }
+                strongSelf.posts.insert(post, at: 0)
+            }
+            
             DispatchQueue.main.async {
                 strongSelf.tableView.reloadData()
             }
         }
+        
+        
     }
     
     func uploadImage(data: Data) {
@@ -212,6 +246,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else if indexPath.section == 2 {
             let feedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell") as! FeedTableViewCell
+            
+            let post = posts[indexPath.row] as! PostModel
+            
+            feedTableViewCell.postImage.sd_cancelCurrentImageLoad()
+            feedTableViewCell.postImage.sd_setImage(with: post.imageURL, completed: nil)
+            feedTableViewCell.postCommentLabel.text = post.caption
+            
+            feedTableViewCell.postImage.backgroundColor = UIColor.lightGray
+            
+            feedTableViewCell.userRef = UserModel.collection.child(post.userId)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MM, yyyy hh:mm"
+            feedTableViewCell.dateLabel.text = dateFormatter.string(from: post.date)
+            
+            
             return feedTableViewCell
         }
         else {

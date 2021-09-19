@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
+import SDWebImage
 
 class CreatePostViewController: UIViewController {
     
@@ -30,15 +34,124 @@ class CreatePostViewController: UIViewController {
         _touchView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         return _touchView
     }()
+    
+    lazy var progressIndicator: UIProgressView = {
+        let _progressIndicator = UIProgressView()
+        _progressIndicator.trackTintColor = UIColor.red
+        _progressIndicator.progressTintColor = UIColor.black
+        _progressIndicator.translatesAutoresizingMaskIntoConstraints = false
+        _progressIndicator.progress = Float(0)
+        return _progressIndicator
+    }()
+    
+    lazy var cancelButton: UIButton = {
+       let _cancelButton = UIButton()
+        _cancelButton.setTitle("Cancel Upload", for: .normal)
+        _cancelButton.setTitleColor(UIColor.black, for: .normal)
+        _cancelButton.addTarget(self, action: #selector(cancelUpload), for: .touchUpInside)
+        _cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        return _cancelButton
+    }()
+    
+    var uploadTask: StorageUploadTask?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initProgressBar()
 
         postImageView.image = postImage
         postCaptionTextView.layer.borderWidth = CGFloat(0.5)
         postCaptionTextView.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).cgColor
         postCaptionTextView.layer.cornerRadius = CGFloat(3.0)
         postCaptionTextView.delegate = self
+    }
+    
+    
+    func initProgressBar() {
+        view.addSubview(progressIndicator)
+        view.addSubview(cancelButton)
+        
+        let constraints: [NSLayoutConstraint] = [
+            progressIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            progressIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            progressIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            progressIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            cancelButton.topAnchor.constraint(equalTo: progressIndicator.bottomAnchor, constant: 5)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        cancelButton.isHidden = true
+        progressIndicator.isHidden = true
+    }
+    
+    @objc func cancelUpload() {
+        progressIndicator.isHidden = true
+        cancelButton.isHidden = true
+        uploadTask?.cancel()
+    }
+    
+    func uploadImage(data: Data, caption: String) {
+        
+        if let user = Auth.auth().currentUser {
+            progressIndicator.isHidden = false
+            cancelButton.isHidden = false
+            progressIndicator.progress = Float(0)
+            
+            let imageId: String = UUID().uuidString.lowercased().replacingOccurrences(of: "-", with: "")
+            let imageName = "\(imageId).jpeg"
+            let pathToPic = "images/\(user.uid)/\(imageName)"
+            let storageRef = Storage.storage().reference(withPath: pathToPic)
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
+            
+            uploadTask = storageRef.putData(data, metadata: metaData, completion: { [weak self] (metaData, error) in
+                guard let strongSelf = self else { return }
+                
+                DispatchQueue.main.async {
+                    strongSelf.progressIndicator.isHidden = true
+                    strongSelf.cancelButton.isHidden = true
+                }
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    let alert = Helper.errorAlert(title: "Upload Error", message: "Problem uploading image")
+                    DispatchQueue.main.async {
+                        strongSelf.present(alert, animated: true, completion: nil)
+                    }
+                    return
+                }
+                
+                storageRef.downloadURL { url, error in
+                    if let url = url,
+                       error == nil {
+                        
+                        PostModel.newPost(userId: user.uid, caption: caption, imageDownloadURL: url.absoluteString)
+                        
+                        
+                    } else {
+                        let alert = Helper.errorAlert(title: "Upload Error", message: "Problem uploading image")
+                        DispatchQueue.main.async {
+                            strongSelf.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }
+                
+                
+            })
+            
+            /*let observer = */ uploadTask!.observe(.progress) {  [weak self] snapshot in
+                guard let strongSelf = self else { return }
+                
+                let percentComplete = 100.0 * (Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount))
+                
+                DispatchQueue.main.async {
+                    strongSelf.progressIndicator.setProgress(Float(percentComplete), animated: true)
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +204,16 @@ class CreatePostViewController: UIViewController {
     
 
     @IBAction func postButtonDidTouch(_ sender: Any) {
+        guard let caption = postCaptionTextView.text,
+              !caption.isEmpty else { return }
         
+        // Some validation here
+        
+        if let resizedImage = postImage.resized(toWidth: 1080) {
+            if let imageData = resizedImage.jpegData(compressionQuality: 0.75) {
+                uploadImage(data: imageData, caption: caption)
+            }
+        }
     }
 
 }

@@ -39,7 +39,16 @@ class UsersModel {
     
 }
 
+
+
 class UserModel {
+    
+    static var personalFeed: DatabaseReference {
+        get {
+            return Database.database(url: "https://instaclone-b0cdb-default-rtdb.europe-west1.firebasedatabase.app")
+                .reference().child("user_posts")
+        }
+    }
     
     static var collection: DatabaseReference {
         get {
