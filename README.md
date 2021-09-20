@@ -1,5 +1,14 @@
 # InstaClone
-Insta clone in edicational purposes
+Insta clone in edicational purposes. Firebase as backend and auth.
+
+- Can login
+- Can sign in
+- Can create posts (image from gallery or photo)
+- Can comment
+- Can like
+- Can follow
+- Can dele posts
+- Can add avatar image
 
 ![alt text](https://raw.githubusercontent.com/afirthes/InstaClone/main/InstaClone/Assets.xcassets/snapshot.png)
 ![alt text](https://raw.githubusercontent.com/afirthes/InstaClone/main/InstaClone/Assets.xcassets/snapshot1.png)
