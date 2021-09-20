@@ -61,6 +61,7 @@ class UserModel {
     var username: String = ""
     var bio: String = ""
     var profileImage: URL?
+    var userId: String
     
     init?(_ snapshot: DataSnapshot) {
         guard let value = snapshot.value as? [String: Any] else { return nil }
@@ -69,6 +70,7 @@ class UserModel {
         if let profileImage = value["profile_image"] as? String {
             self.profileImage = URL(string: profileImage)
         }
+        self.userId = snapshot.key
     }
     
 }

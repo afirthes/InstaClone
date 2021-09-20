@@ -144,7 +144,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        profileVC.profileType = .otherUser
+        // TODO: need to fix
         navigationController?.pushViewController(profileVC, animated: true)
         
     }
@@ -211,10 +211,10 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension PostViewController: ProfileDelegate {
     
-    func userNameDidTouch() {
+    func userNameDidTouch(userId: String) {
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        profileVC.profileType = .otherUser
+        profileVC.userId = userId
         navigationController?.pushViewController(profileVC, animated: true)
     }
     

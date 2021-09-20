@@ -65,7 +65,8 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func userNameButtonDidTouch(_ sender: Any) {
-        profileDelegate?.userNameDidTouch()
+        guard let userId = currentUserModel?.userId else { return }
+        profileDelegate?.userNameDidTouch(userId: userId)
     }
     
     @IBAction func likeButtonDidTouch(_ sender: Any) {

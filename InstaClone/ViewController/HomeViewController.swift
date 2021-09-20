@@ -147,8 +147,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     strongSelf.firstChild = snapshot.children.allObjects.first as? DataSnapshot
                     DispatchQueue.main.async {
-                        //strongSelf.tableView.insertRows(at: indexes, with: .fade)
-                        strongSelf.tableView.reloadData()
+                        strongSelf.tableView.insertRows(at: indexes, with: .fade)
+                        //strongSelf.tableView.reloadData()
                     }
                 }
             }
@@ -233,10 +233,10 @@ extension HomeViewController: FeedDataDelegate {
 
 extension HomeViewController: ProfileDelegate {
     
-    func userNameDidTouch() {
+    func userNameDidTouch(userId: String) {
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        profileVC.profileType = .otherUser
+        profileVC.userId = userId
         navigationController?.pushViewController(profileVC, animated: true)
     }
     

@@ -164,5 +164,9 @@ class FeedTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func userNameDidTouch(_ sender: Any) {
+        guard let userId = currentUser?.userId else { return }
+        profileDelegate?.userNameDidTouch(userId: userId)
+    }
     
 }

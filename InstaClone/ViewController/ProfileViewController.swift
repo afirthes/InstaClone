@@ -20,16 +20,32 @@ enum ProfileType {
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var posts: NSMutableArray = []
-    var userPostsRef: DatabaseReference? {
-        guard let userId = Auth.auth().currentUser?.uid else { return nil }
-        return UserModel.personalFeed.child(userId)
-    }
-    var profileType: ProfileType = .personal
-    var user: UserModel?
+    private var posts: NSMutableArray = []
+    
+    private var profileType: ProfileType = .personal
+    private var user: UserModel?
     private let imagePicker = UIImagePickerController()
     
-    let PAGINATION_COUNT: UInt = 2
+    private let PAGINATION_COUNT: UInt = 2
+    
+    var userId: String? {
+        didSet {
+            guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+            guard let userId = userId else { return }
+            
+            if currentUserId == userId {
+                profileType = .personal
+            } else {
+                profileType = .otherUser
+            }
+            userPostsRef = UserModel.personalFeed.child(userId)
+            userProfileRef = UserModel.collection.child(userId)
+        }
+    }
+    
+    private var userPostsRef: DatabaseReference?
+    
+    private var userProfileRef: DatabaseReference?
     
     var firstChild: DataSnapshot?
     
@@ -91,10 +107,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadData() {
         
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        let userRef = UserModel.collection.child(userId)
         let spinner = UIViewController.displayLoading(withView: self.view)
-        userRef.observe(.value) { [weak self] (snapshot) in
+        userProfileRef?.observe(.value) { [weak self] (snapshot) in
             guard let strongSelf = self else { return }
             UIViewController.removeLoading(spinner: spinner)
             guard let user = UserModel(snapshot) else { return }

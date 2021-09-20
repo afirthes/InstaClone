@@ -6,7 +6,7 @@ protocol FeedDataDelegate: AnyObject {
 }
 
 protocol ProfileDelegate: AnyObject {
-    func userNameDidTouch()
+    func userNameDidTouch(userId: String)
 }
 
 protocol ActivityDelegate1: AnyObject {

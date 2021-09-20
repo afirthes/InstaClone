@@ -65,6 +65,7 @@
 		08F6572E26F73CBF00B47C7B /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08F6572D26F73CBF00B47C7B /* Post.storyboard */; };
 		08F6573026F73E3E00B47C7B /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6572F26F73E3E00B47C7B /* CommentsModel.swift */; };
 		08F6573226F78B5000B47C7B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6573126F78B5000B47C7B /* SearchViewController.swift */; };
+		08F6573426F8BCDD00B47C7B /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6573326F8BCDD00B47C7B /* SearchResultsTableViewController.swift */; };
 		6D24F44D9EE75D6A54A7DC9D /* Pods_InstaClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288ACFB1AECA0CF91D19BE8D /* Pods_InstaClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		08F6572D26F73CBF00B47C7B /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		08F6572F26F73E3E00B47C7B /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
 		08F6573126F78B5000B47C7B /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		08F6573326F8BCDD00B47C7B /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		288ACFB1AECA0CF91D19BE8D /* Pods_InstaClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1985D36D3547BC90169A9 /* Pods-InstaClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.debug.xcconfig"; path = "Target Support Files/Pods-InstaClone/Pods-InstaClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A8F0EFB4D74A37E5C69F98FA /* Pods-InstaClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.release.xcconfig"; path = "Target Support Files/Pods-InstaClone/Pods-InstaClone.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */,
 				08910BF026F2076300F18DAB /* CameraViewController.swift */,
 				08421D4B26F5B8D0005700D4 /* CreatePostViewController.swift */,
+				08F6573326F8BCDD00B47C7B /* SearchResultsTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				0814A77A26EF86520017D381 /* UserData.swift in Sources */,
 				08421D5026F6FFF1005700D4 /* LikesModel.swift in Sources */,
 				08910BE026EFAA9600F18DAB /* StoryCollectionViewCell.swift in Sources */,
+				08F6573426F8BCDD00B47C7B /* SearchResultsTableViewController.swift in Sources */,
 				08F6572C26F73ACC00B47C7B /* CommentTableViewCell.swift in Sources */,
 				082AB72A26F33C4200223945 /* PhotoCollectionViewCell.swift in Sources */,
 				08F6573026F73E3E00B47C7B /* CommentsModel.swift in Sources */,
