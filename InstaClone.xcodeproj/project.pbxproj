@@ -57,6 +57,7 @@
 		08910BEF26F2067200F18DAB /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */; };
 		08910BF126F2076300F18DAB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BF026F2076300F18DAB /* CameraViewController.swift */; };
 		08910BF326F23F6400F18DAB /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BF226F23F6400F18DAB /* TabBarDelegate.swift */; };
+		08DF675026F8EBE500979024 /* FollowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF674F26F8EBE500979024 /* FollowModel.swift */; };
 		08F6572426F7391B00B47C7B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6572326F7391B00B47C7B /* PostViewController.swift */; };
 		08F6572726F7393A00B47C7B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6572526F7393A00B47C7B /* PostTableViewCell.swift */; };
 		08F6572826F7393A00B47C7B /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F6572626F7393A00B47C7B /* PostTableViewCell.xib */; };
@@ -122,6 +123,7 @@
 		08910BEE26F2067200F18DAB /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		08910BF026F2076300F18DAB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		08910BF226F23F6400F18DAB /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
+		08DF674F26F8EBE500979024 /* FollowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowModel.swift; sourceTree = "<group>"; };
 		08F6572326F7391B00B47C7B /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		08F6572526F7393A00B47C7B /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		08F6572626F7393A00B47C7B /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0814A77226EF86520017D381 /* UserData.swift */,
+				08DF674F26F8EBE500979024 /* FollowModel.swift */,
 				0814A77326EF86520017D381 /* FeedData.swift */,
 				0814A77426EF86520017D381 /* ActivityData.swift */,
 				08421D4F26F6FFF1005700D4 /* LikesModel.swift */,
@@ -428,6 +431,7 @@
 			files = (
 				0814A77C26EF86520017D381 /* ActivityData.swift in Sources */,
 				08F6572726F7393A00B47C7B /* PostTableViewCell.swift in Sources */,
+				08DF675026F8EBE500979024 /* FollowModel.swift in Sources */,
 				0814A77D26EF86520017D381 /* SimpleCameraProtocol.swift in Sources */,
 				0814A76226EF863B0017D381 /* ViewController.swift in Sources */,
 				0814A77B26EF86520017D381 /* FeedData.swift in Sources */,
