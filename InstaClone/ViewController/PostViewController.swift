@@ -141,10 +141,10 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.section == 0 {
             return
         }
-        
+        let comment = comments[indexPath.row] as! CommentsModel
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        // TODO: need to fix
+        profileVC.userId = comment.userId
         navigationController?.pushViewController(profileVC, animated: true)
         
     }

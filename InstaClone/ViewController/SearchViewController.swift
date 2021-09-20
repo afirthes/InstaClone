@@ -25,7 +25,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let storyboard = UIStoryboard(name: "Search", bundle: nil)
         let searchResultVC = storyboard.instantiateViewController(withIdentifier: "SearchResults") as! SearchResultsTableViewController
-        
+        searchResultVC.navControl = self.navigationController
         searchController = UISearchController(searchResultsController: searchResultVC)
         
         searchController.searchResultsUpdater = searchResultVC

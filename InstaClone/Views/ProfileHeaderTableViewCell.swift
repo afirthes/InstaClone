@@ -16,6 +16,34 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfFollowersLabel: UILabel!
     @IBOutlet weak var numberOfFollowingLabel: UILabel!
     
+    var user: UserModel? {
+        didSet {
+            guard let userId = user?.userId else { return }
+            FollowModel.getFollowingCount(for: userId) { [weak self] (followersCount) in
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    strongSelf.numberOfFollowersLabel.text = "\(followersCount)"
+                }
+                
+            }
+            FollowModel.getFollowingCount(for: userId) { [weak self] (followingCount) in
+                guard let strongSelf = self else { return }
+                
+                DispatchQueue.main.async {
+                    strongSelf.numberOfFollowersLabel.text = "\(followingCount)"
+                }
+            }
+            
+            PostModel.getPostCount(for: userId) { [weak self] (postCount) in
+                guard let strongSelf = self else { return }
+                
+                DispatchQueue.main.async {
+                    strongSelf.numberOfPostsLabel.text = "\(postCount)"
+                }
+            }
+        }
+    }
+    
     var profileType: ProfileType = .personal
     weak var delegate: ProfileHeaderDelegate?
     

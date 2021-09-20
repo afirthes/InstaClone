@@ -67,32 +67,7 @@ class Model {
 
 
 class PostModel {
-    static var collection: DatabaseReference {
-        get {
-            return Database
-                .database(url: "https://instaclone-b0cdb-default-rtdb.europe-west1.firebasedatabase.app")
-                .reference()
-                .child("posts")
-        }
-    }
-    
-    static func newPost(userId: String, caption: String, imageDownloadURL: String) {
-        let datePosted = Date().timeIntervalSince1970
-        
-        // request temporary key until we use it
-        guard let key = PostModel.collection.childByAutoId().key else { return }
-        
-        let post:[String:Any] = [
-            "user": userId,
-            "image": imageDownloadURL,
-            "caption": caption,
-            "date": datePosted
-        ]
-        
-        PostModel.collection.updateChildValues(["\(key)":post])
-        let personalRef = UserModel.personalFeed
-        personalRef.child(userId).updateChildValues(["\(key)":post])
-    }
+   
     
     var date: Date
     var userId: String
@@ -124,4 +99,42 @@ class PostModel {
             UserModel.personalFeed.child(userId).child(postId).removeValue()
         }
     }
+    
+    static var collection: DatabaseReference {
+        get {
+            return Database
+                .database(url: "https://instaclone-b0cdb-default-rtdb.europe-west1.firebasedatabase.app")
+                .reference()
+                .child("posts")
+        }
+    }
+    
+    static func newPost(userId: String, caption: String, imageDownloadURL: String) {
+        let datePosted = Date().timeIntervalSince1970
+        
+        // request temporary key until we use it
+        guard let key = PostModel.collection.childByAutoId().key else { return }
+        
+        let post:[String:Any] = [
+            "user": userId,
+            "image": imageDownloadURL,
+            "caption": caption,
+            "date": datePosted
+        ]
+        
+        PostModel.collection.updateChildValues(["\(key)":post])
+        let personalRef = UserModel.personalFeed
+        personalRef.child(userId).updateChildValues(["\(key)":post])
+    }
+    
+    static func getPostCount(for userId: String,  completion: @escaping(_ postCount:Int)->Void) {
+        let userPostsRef = UserModel.personalFeed.child(userId)
+        userPostsRef.observeSingleEvent(of: .value) { (snapshot) in
+            let postCount = Int(snapshot.childrenCount)
+            completion(postCount)
+            return
+        }
+    }
+    
+    
 }

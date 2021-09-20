@@ -332,7 +332,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             profileHeaderTableViewCell.profileType = profileType
             profileHeaderTableViewCell.nameLabel.text = ""
             profileHeaderTableViewCell.delegate = self
-            
+            profileHeaderTableViewCell.user = user
             if let user = user {
                 profileHeaderTableViewCell.nameLabel.text = user.username
                 
@@ -341,6 +341,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     profileHeaderTableViewCell.profileImageView.sd_setImage(with: profileImage, completed: nil)
                 }
             }
+            
+            
             
             switch profileType {
                 case .otherUser:
