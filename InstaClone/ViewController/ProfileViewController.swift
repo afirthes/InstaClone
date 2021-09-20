@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var user: UserModel?
     private let imagePicker = UIImagePickerController()
     
-    let PAGINATION_COUNT: UInt = 5
+    let PAGINATION_COUNT: UInt = 2
     
     var firstChild: DataSnapshot?
     
@@ -256,7 +256,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         
                         indexes.append(IndexPath(row: strongSelf.posts.count, section: 2))
                         
-                        if let post = PostModel(snapshot) {
+                        if let post = PostModel(data) {
                             
                             strongSelf.posts.add(post)
                             
@@ -266,7 +266,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     strongSelf.firstChild = snapshot.children.allObjects.first as? DataSnapshot
                     DispatchQueue.main.async {
-                        strongSelf.tableView.insertRows(at: indexes, with: .fade)
+                        //strongSelf.tableView.insertRows(at: indexes, with: .fade)
+                        strongSelf.tableView.reloadData()
                     }
                 }
             }
