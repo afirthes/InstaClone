@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class FeedTableViewCell: UITableViewCell {
 
@@ -97,6 +98,8 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
+    weak var deletePostDelegate: PostDeleDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -147,6 +150,18 @@ class FeedTableViewCell: UITableViewCell {
         guard let likesModel = likesModel else { return }
         
         self.feedDelegate?.commentsDidTouch(post: postModel, likesModel: likesModel, userModel: currentUser)
+    }
+    
+    @IBAction func deletePostDidTouch(_ sender: Any) {
+        
+        guard let postModel = postModel else { return }
+        let userPostId = postModel.userId
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        if userPostId == currentUserId {
+            deletePostDelegate?.confirmDelete(postId: postModel.key)
+        }
+        
     }
     
     

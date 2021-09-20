@@ -37,6 +37,9 @@
                             <constraint firstAttribute="width" constant="40" id="EP4-oP-qhT"/>
                         </constraints>
                         <state key="normal" image="more_icon"/>
+                        <connections>
+                            <action selector="deletePostDidTouch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="i4v-ZZ-jYu"/>
+                        </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KT4-BR-wiw">
                         <rect key="frame" x="0.0" y="66" width="599" height="449.5"/>

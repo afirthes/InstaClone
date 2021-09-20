@@ -114,4 +114,14 @@ class PostModel {
         self.imageURL = imageURL
         self.key = snapshot.key
     }
+    
+    static func deletePost(postId: String) {
+        PostModel.collection.child(postId).removeValue()
+        CommentsModel.collection.child(postId).removeValue()
+        LikesModel.collection.child(postId).removeValue()
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            UserModel.personalFeed.child(userId).child(postId).removeValue()
+        }
+    }
 }

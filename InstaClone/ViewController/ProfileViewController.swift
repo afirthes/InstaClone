@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var uploadTask: StorageUploadTask?
     
     var newQuery: DatabaseQuery?
+    
+    var oldRef: DatabaseReference?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,7 +112,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func objserveNewItems(_ lastChild: DataSnapshot?, newRef: DatabaseReference) {
-        guard let userPostsRef = userPostsRef else { return }
         newQuery?.removeAllObservers()
         newQuery = newRef.queryOrderedByKey()
         if let startKey = lastChild?.key {
@@ -155,6 +156,23 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        oldRef?.removeAllObservers()
+        
+        oldRef = userPostsRef
+        
+        oldRef?.observe(.childRemoved, with: {[weak self]  (snapshot) in
+            guard let strongSelf = self else { return }
+            
+            for item in strongSelf.posts {
+                if let post = item as? PostModel, snapshot.key == post.key {
+                    strongSelf.posts.remove(item)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+        })
         
     }
     
@@ -341,6 +359,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             feedTableViewCell.postModel = post
             
             feedTableViewCell.feedDelegate = self
+            feedTableViewCell.deletePostDelegate = self
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MM, yyyy hh:mm"
@@ -353,6 +372,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             return UITableViewCell()
         }
         
+    }
+    
+    deinit {
+        newQuery?.removeAllObservers()
+        oldRef?.removeAllObservers()
     }
 
 
@@ -417,4 +441,20 @@ extension ProfileViewController: ProfileHeaderDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
+}
+
+extension ProfileViewController: PostDeleDelegate {
+    func confirmDelete(postId: String) {
+        let alert = UIAlertController(title: "Delete Post", message: "Are you sure?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            PostModel.deletePost(postId: postId)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 }

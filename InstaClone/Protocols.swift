@@ -18,3 +18,6 @@ protocol ProfileHeaderDelegate: AnyObject {
     func profileImageDidTouch()
 }
 
+protocol PostDeleDelegate: AnyObject {
+    func confirmDelete(postId: String)
+}
