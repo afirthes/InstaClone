@@ -3,6 +3,8 @@ Insta clone in edicational purposes. Firebase as backend and auth.
 
 - Can login
 - Can sign in
+- Cool gradient animation on login and sign in screen
+- Prevent keyboard overlap when typing
 - Can create posts (image from gallery or photo)
 - Can comment
 - Can like
