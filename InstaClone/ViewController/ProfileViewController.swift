@@ -31,6 +31,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let PAGINATION_COUNT: UInt = 5
     
+    var firstChild: DataSnapshot?
+    
     lazy var progressIndicator: UIProgressView = {
         let _progressIndicator = UIProgressView()
         _progressIndicator.trackTintColor = UIColor.red
@@ -50,6 +52,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }()
     
     var uploadTask: StorageUploadTask?
+    
+    var newQuery: DatabaseQuery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +109,29 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func objserveNewItems(_ lastChild: DataSnapshot?, newRef: DatabaseReference) {
+        guard let userPostsRef = userPostsRef else { return }
+        newQuery?.removeAllObservers()
+        newQuery = newRef.queryOrderedByKey()
+        if let startKey = lastChild?.key {
+            newQuery = newQuery?.queryStarting(atValue: startKey)
+        }
+        newQuery?.observe(.childAdded, with: { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            if snapshot.key != lastChild?.key {
+                if let post = PostModel(snapshot) {
+                    
+                    strongSelf.posts.insert(post, at: 0)
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.tableView.reloadData()
+                    }
+                    
+                }
+            }
+        })
+    }
+    
     func getUserPosts() {
         
         guard let userPostsRef = userPostsRef else { return }
@@ -117,6 +144,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 guard let post = PostModel(snapshot) else { continue }
                 strongSelf.posts.insert(post, at: 0)
             }
+            
+            strongSelf.firstChild = snapshot.children.allObjects.first as? DataSnapshot
+            let lastChild = snapshot.children.allObjects.last as? DataSnapshot
+            strongSelf.objserveNewItems(lastChild, newRef: userPostsRef)
+            
             
             DispatchQueue.main.async {
                 strongSelf.tableView.reloadData()
@@ -192,6 +224,54 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         progressIndicator.isHidden = true
         cancelButton.isHidden = true
         uploadTask?.cancel()
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if let lastIndex = self.tableView.indexPathsForVisibleRows?.last {
+            if lastIndex.section == 2 {
+                if lastIndex.row >= self.posts.count - 2 {
+                    loadMore()
+                }
+            }
+        }
+    }
+    
+    func loadMore() {
+        guard let userPostsRef = userPostsRef else { return }
+        var paginationQuery = userPostsRef.queryOrderedByKey().queryLimited(toLast:  PAGINATION_COUNT + 1)
+        
+        if let firstKey = firstChild?.key {
+            paginationQuery = paginationQuery.queryEnding(atValue: firstKey)
+            paginationQuery.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+                guard let strongSelf = self else { return }
+                
+                let items = snapshot.children.allObjects
+                
+                var indexes: [IndexPath] = []
+                
+                if items.count > 1 {
+                    for i in 2...items.count {
+                        
+                        let data = items[items.count - i] as! DataSnapshot
+                        
+                        indexes.append(IndexPath(row: strongSelf.posts.count, section: 2))
+                        
+                        if let post = PostModel(snapshot) {
+                            
+                            strongSelf.posts.add(post)
+                            
+                        }
+                        
+                    }
+                    
+                    strongSelf.firstChild = snapshot.children.allObjects.first as? DataSnapshot
+                    DispatchQueue.main.async {
+                        strongSelf.tableView.insertRows(at: indexes, with: .fade)
+                    }
+                }
+            }
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

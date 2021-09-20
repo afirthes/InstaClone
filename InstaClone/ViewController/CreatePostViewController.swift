@@ -130,6 +130,9 @@ class CreatePostViewController: UIViewController {
                         
                         PostModel.newPost(userId: user.uid, caption: caption, imageDownloadURL: url.absoluteString)
                         
+                        DispatchQueue.main.async {
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
                         
                     } else {
                         let alert = Helper.errorAlert(title: "Upload Error", message: "Problem uploading image")
@@ -142,7 +145,7 @@ class CreatePostViewController: UIViewController {
                 
             })
             
-            /*let observer = */ uploadTask!.observe(.progress) {  [weak self] snapshot in
+            uploadTask!.observe(.progress) {  [weak self] snapshot in
                 guard let strongSelf = self else { return }
                 
                 let percentComplete = 100.0 * (Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount))
