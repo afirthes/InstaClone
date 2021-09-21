@@ -84,7 +84,21 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     }
     
     func follow() {
-        print("follow")
+        guard let userId = user?.userId else { return }
+        FollowModel.toggle(userId) { [weak self] isFollowing in
+            guard let strongSelf = self else { return }
+            guard let isFollowing = isFollowing else { return }
+            if isFollowing {
+                DispatchQueue.main.async {
+                    strongSelf.profileButton.setTitle("Following", for: .normal)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    strongSelf.profileButton.setTitle("Follow", for: .normal)
+                }
+            }
+        }
     }
     
 }
