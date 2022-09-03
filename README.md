@@ -1,6 +1,10 @@
 # InstaClone
 Insta clone in edicational purposes. Firebase as backend and auth.
-
+```
+  func foo() {
+  
+  }
+```
 - Can login
 - Can sign in
 - Cool gradient animation on login and sign in screen
